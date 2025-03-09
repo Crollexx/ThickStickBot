@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  bot:
+    build: .
+    restart: always
+    volumes:
+      - ./data:/usr/src/app/data
+      - ./credentials.json:/usr/src/app/credentials.json:ro
+      - ./.env:/usr/src/app/.env:ro
+    environment:
+      - NODE_ENV=production
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3" 

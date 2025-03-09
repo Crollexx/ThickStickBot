@@ -1,0 +1,25 @@
+2025-03-09 11:00:53 error: Ошибка при обновлении количества палок: The caller does not have permission
+2025-03-09 11:00:53 error: Ошибка при обновлении палок: The caller does not have permission
+2025-03-09 11:01:47 error: Ошибка при обновлении количества палок: The caller does not have permission
+2025-03-09 11:01:47 error: Ошибка при обновлении палок: The caller does not have permission
+2025-03-09 11:07:17 error: Ошибка при обновлении количества палок: The caller does not have permission
+2025-03-09 11:07:17 error: Ошибка при обновлении палок: The caller does not have permission
+2025-03-09 11:16:08 error: Ошибка при обновлении количества палок: The caller does not have permission
+2025-03-09 11:16:08 error: Ошибка при обновлении палок: The caller does not have permission
+2025-03-09 11:31:51 error: Ошибка в получении статистики: bot.sendMessage is not a function
+2025-03-09 11:31:51 error: Ошибка при обновлении палок: ETELEGRAM: 400 Bad Request: chat_id is empty
+2025-03-09 11:32:13 error: Ошибка в получении статистики: bot.sendMessage is not a function
+2025-03-09 11:32:13 error: Ошибка при обновлении палок: ETELEGRAM: 400 Bad Request: chat_id is empty
+2025-03-09 11:32:46 error: Ошибка в получении статистики: bot.sendMessage is not a function
+2025-03-09 11:32:46 error: Ошибка при обновлении палок: ETELEGRAM: 400 Bad Request: chat_id is empty
+2025-03-09 11:34:34 error: Ошибка в получении статистики: bot.sendMessage is not a function
+2025-03-09 11:34:34 error: Ошибка при обновлении палок: ETELEGRAM: 400 Bad Request: chat_id is empty
+2025-03-09 11:37:01 error: Ошибка в получении статистики: bot.sendMessage is not a function
+2025-03-09 11:37:01 error: Ошибка при обновлении палок: ETELEGRAM: 400 Bad Request: chat_id is empty
+2025-03-09 11:38:05 error: Ошибка в получении статистики: bot.sendMessage is not a function
+2025-03-09 11:38:05 error: Ошибка при обновлении палок: ETELEGRAM: 400 Bad Request: chat_id is empty
+2025-03-09 11:40:26 error: Ошибка в получении статистики: bot.sendMessage is not a function
+2025-03-09 11:40:26 error: Ошибка при обновлении палок: ETELEGRAM: 400 Bad Request: chat_id is empty
+2025-03-09 20:38:50 error: Ошибка при подключении к Telegram API: EFATAL: Error: read ECONNRESET
+2025-03-09 20:58:17 error: Ошибка при подключении к Telegram API: EFATAL: Error: read ECONNRESET
+2025-03-09 20:59:33 error: Ошибка при подключении к Telegram API: EFATAL: Error: read ECONNRESET
