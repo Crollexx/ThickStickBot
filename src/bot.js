@@ -5,7 +5,7 @@ const commandHandlers = require('./handlers/commandHandlers');
 const logger = require('./utils/logger');
 
 // Список поддерживаемых команд
-const SUPPORTED_COMMANDS = ['/start', '/chart', '/stats', '/rules', '/subscribe', '/unsubscribe'];
+const SUPPORTED_COMMANDS = ['/start', '/chart', '/stats', '/rules', '/subscribe', '/unsubscribe', '/time', '/results'];
 
 class Bot {
     constructor() {
@@ -30,6 +30,57 @@ class Bot {
             
             this.registerCommands();
             this.setupCleanup();
+            
+            // Добавляем обработчик для сообщений и callback query
+            this.bot.on('message', async (msg) => {
+                try {
+                    logger.info(`Получено сообщение: ${msg.text} от ${msg.from.username} в чате ${msg.chat.id} (тип: ${msg.chat.type})`);
+                    
+                    // Проверяем наличие текста в сообщении
+                    if (!msg.text) {
+                        logger.debug('Сообщение не содержит текста');
+                        return;
+                    }
+
+                    // Дополнительное логирование для групповых чатов
+                    if (msg.chat.type === 'group' || msg.chat.type === 'supergroup') {
+                        logger.info(`Обработка сообщения в групповом чате ${msg.chat.title} (${msg.chat.id})`);
+                    }
+
+                    // Проверяем, содержит ли сообщение время (две цифры до и после двоеточия)
+                    const timeRegex = /([0-9]{1,2}):([0-9]{1,2})/;
+                    const timeMatch = msg.text.match(timeRegex);
+                    
+                    if (timeMatch) {
+                        // Если это время, обрабатываем как голос
+                        const handled = await commandHandlers.handleMessage(msg);
+                        if (handled) {
+                            logger.info(`Сообщение обработано как голос в опросе: ${timeMatch[0]}`);
+                            return;
+                        }
+                    }
+
+                    // Если это команда, обрабатываем как команду
+                    if (msg.text.startsWith('/')) {
+                        logger.debug(`Обработка как команда: ${msg.text}`);
+                        return;
+                    }
+
+                    // Для остальных сообщений проверяем на наличие времени
+                    const handled = await commandHandlers.handleMessage(msg);
+                    if (handled) {
+                        logger.info(`Сообщение обработано как голос в опросе: ${msg.text}`);
+                    } else {
+                        logger.debug(`Сообщение не обработано как голос: ${msg.text}`);
+                    }
+                } catch (error) {
+                    logger.error('Ошибка при обработке сообщения:', error);
+                }
+            });
+
+            this.bot.on('callback_query', async (query) => {
+                await commandHandlers.handleCallbackQuery(query);
+            });
             
             logger.info('Бот успешно инициализирован и запущен');
         } catch (error) {
@@ -100,6 +151,12 @@ class Bot {
         // Обработка неизвестных команд
         this.bot.onText(/\/.*/, async (msg) => {
             try {
+                // Проверяем, не является ли это временем
+                const timeRegex = /([0-9]{1,2}):([0-9]{1,2})/;
+                if (timeRegex.test(msg.text)) {
+                    return; // Игнорируем сообщения с форматом времени
+                }
+
                 const command = msg.text.split(' ')[0].toLowerCase();
                 if (!SUPPORTED_COMMANDS.includes(command) && 
                     !['/sticks', '/stics', '/stick', '/палки'].includes(command)) {
@@ -121,7 +178,9 @@ class Bot {
                 '/rules - правила\n' +
                 '/sticks - изменить количество палок\n' +
                 '/subscribe - подписаться на уведомления\n' +
-                '/unsubscribe - отписаться от уведомлений'
+                '/unsubscribe - отписаться от уведомлений\n' +
+                '/time - создать опрос "Во сколько играем?"\n' +
+                '/results - показать результаты опроса'
             );
         } catch (error) {
             logger.error('Ошибка при отправке сообщения о неизвестной команде:', error);

@@ -23,3 +23,66 @@
 2025-03-09 20:38:50 error: Ошибка при подключении к Telegram API: EFATAL: Error: read ECONNRESET
 2025-03-09 20:58:17 error: Ошибка при подключении к Telegram API: EFATAL: Error: read ECONNRESET
 2025-03-09 20:59:33 error: Ошибка при подключении к Telegram API: EFATAL: Error: read ECONNRESET
+2025-03-10 08:42:47 error: Ошибка при сохранении времени опроса: The caller does not have permission
+2025-03-10 08:42:47 error: Ошибка при сохранении времени: The caller does not have permission
+2025-03-10 08:54:25 error: Ошибка при сохранении голоса: The caller does not have permission
+2025-03-10 08:54:25 error: Ошибка в сохранении голоса: The caller does not have permission
+2025-03-10 08:54:32 error: Ошибка при сохранении голоса: The caller does not have permission
+2025-03-10 08:54:32 error: Ошибка в сохранении голоса: The caller does not have permission
+2025-03-10 08:54:36 error: Ошибка при сохранении голоса: The caller does not have permission
+2025-03-10 08:54:36 error: Ошибка в сохранении голоса: The caller does not have permission
+2025-03-10 08:54:39 error: Ошибка при получении результатов опроса: Необходимые столбцы не найдены
+2025-03-10 08:54:39 error: Ошибка в получении результатов опроса: Необходимые столбцы не найдены
+2025-03-10 09:27:39 error: Ошибка в обработке голоса: ETELEGRAM: 400 Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-03-10 09:30:00 error: Ошибка в обработке голоса: ETELEGRAM: 400 Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-03-10 09:32:52 error: Ошибка в обработке голоса: ETELEGRAM: 400 Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-03-10 09:39:34 error: Ошибка в обработке голоса: ETELEGRAM: 400 Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-03-10 09:42:12 error: Ошибка в обработке голоса: ETELEGRAM: 400 Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-03-10 09:47:56 error: Ошибка в обработке голоса: ETELEGRAM: 400 Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-03-10 09:48:21 error: Ошибка в обработке голоса: ETELEGRAM: 400 Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-03-10 10:02:35 error: Ошибка при выполнении команды /poll: commandHandlers[handlerName] is not a function
+2025-03-10 10:02:39 error: Ошибка при выполнении команды /poll: commandHandlers[handlerName] is not a function
+2025-03-10 10:02:41 error: Ошибка при выполнении команды /results: commandHandlers[handlerName] is not a function
+2025-03-10 10:29:28 error: Ошибка при выполнении команды /poll: commandHandlers[handlerName] is not a function
+2025-03-10 10:29:37 error: Ошибка при выполнении команды /results: commandHandlers[handlerName] is not a function
+2025-03-10 10:29:41 error: Ошибка при выполнении команды /poll: commandHandlers[handlerName] is not a function
+2025-03-10 10:29:44 error: Ошибка при выполнении команды /poll: commandHandlers[handlerName] is not a function
+2025-03-10 10:36:19 error: Ошибка при выполнении команды /setvote: commandHandlers[handlerName] is not a function
+2025-03-10 10:36:22 error: Ошибка при выполнении команды /setvote: commandHandlers[handlerName] is not a function
+2025-03-10 10:49:56 error: Ошибка в обработке голоса: ETELEGRAM: 400 Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-03-10 10:50:05 error: Ошибка в обработке голоса: ETELEGRAM: 400 Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-03-10 19:36:19 error: Ошибка при подключении к Telegram API: EFATAL: Error: read ECONNRESET
+2025-03-10 19:36:30 error: Ошибка при подключении к Telegram API: EFATAL: Error: getaddrinfo ENOTFOUND api.telegram.org
+2025-03-11 04:42:36 error: Ошибка при подключении к Telegram API: EFATAL: Error: read ECONNRESET
+2025-03-11 04:42:37 error: Ошибка при подключении к Telegram API: EFATAL: Error: getaddrinfo ENOTFOUND api.telegram.org
+2025-03-11 04:42:37 error: Ошибка при получении данных из Google Sheets: request to https://sheets.googleapis.com/v4/spreadsheets/1p2EJqtudEFB7waOBhdeHVRtECmoRMTeyOBRAaKEDBzc/values/A%3AB?valueRenderOption=UNFORMATTED_VALUE&majorDimension=ROWS failed, reason: getaddrinfo ENOTFOUND sheets.googleapis.com
+2025-03-11 04:42:37 error: Ошибка при проверке обновлений: request to https://sheets.googleapis.com/v4/spreadsheets/1p2EJqtudEFB7waOBhdeHVRtECmoRMTeyOBRAaKEDBzc/values/A%3AB?valueRenderOption=UNFORMATTED_VALUE&majorDimension=ROWS failed, reason: getaddrinfo ENOTFOUND sheets.googleapis.com
+2025-03-11 04:42:37 error: Ошибка при подключении к Telegram API: EFATAL: Error: getaddrinfo ENOTFOUND api.telegram.org
+2025-03-11 04:42:37 error: Ошибка при подключении к Telegram API: EFATAL: Error: getaddrinfo ENOTFOUND api.telegram.org
+2025-03-11 04:42:37 error: Ошибка при подключении к Telegram API: EFATAL: Error: getaddrinfo ENOTFOUND api.telegram.org
+2025-03-11 04:42:38 error: Ошибка при подключении к Telegram API: EFATAL: Error: getaddrinfo ENOTFOUND api.telegram.org
+2025-03-11 04:42:38 error: Ошибка при подключении к Telegram API: EFATAL: Error: getaddrinfo ENOTFOUND api.telegram.org
+2025-03-11 04:42:38 error: Ошибка при подключении к Telegram API: EFATAL: Error: getaddrinfo ENOTFOUND api.telegram.org
+2025-03-11 04:42:39 error: Ошибка при подключении к Telegram API: EFATAL: Error: getaddrinfo ENOTFOUND api.telegram.org
+2025-03-11 04:42:39 error: Ошибка при подключении к Telegram API: EFATAL: Error: getaddrinfo ENOTFOUND api.telegram.org
+2025-03-11 04:42:39 error: Ошибка при подключении к Telegram API: EFATAL: Error: getaddrinfo ENOTFOUND api.telegram.org
+2025-03-11 04:42:40 error: Ошибка при подключении к Telegram API: EFATAL: Error: getaddrinfo ENOTFOUND api.telegram.org
+2025-03-11 04:42:40 error: Ошибка при подключении к Telegram API: EFATAL: Error: getaddrinfo ENOTFOUND api.telegram.org
+2025-03-11 04:42:40 error: Ошибка при подключении к Telegram API: EFATAL: Error: getaddrinfo ENOTFOUND api.telegram.org
+2025-03-11 04:42:41 error: Ошибка при подключении к Telegram API: EFATAL: Error: getaddrinfo ENOTFOUND api.telegram.org
+2025-03-11 04:42:41 error: Ошибка при подключении к Telegram API: EFATAL: Error: getaddrinfo ENOTFOUND api.telegram.org
+2025-03-11 04:42:41 error: Ошибка при подключении к Telegram API: EFATAL: Error: getaddrinfo ENOTFOUND api.telegram.org
+2025-03-11 04:43:29 error: Ошибка при подключении к Telegram API: EFATAL: Error: read ECONNRESET
+2025-03-11 08:39:28 error: Ошибка в обработке голоса: ETELEGRAM: 400 Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-03-11 08:48:17 error: Ошибка при подключении к Telegram API: EFATAL: Error: read ECONNRESET
+2025-03-11 08:51:44 error: Ошибка при подключении к Telegram API: EFATAL: Error: read ECONNRESET
+2025-03-11 09:32:13 error: Ошибка при подключении к Telegram API: EFATAL: Error: read ECONNRESET
+2025-03-11 09:33:39 error: Ошибка при подключении к Telegram API: EFATAL: Error: read ECONNRESET
+2025-03-11 10:00:57 error: Ошибка при подключении к Telegram API: EFATAL: Error: read ECONNRESET
+2025-03-11 12:24:05 error: Ошибка при выполнении команды /setvote: commandHandlers[handlerName] is not a function
+2025-03-11 13:01:07 error: Ошибка в обработке голоса: EFATAL: Error: read ECONNRESET
+2025-03-11 13:03:41 error: Ошибка при выполнении команды /dota: commandHandlers[handlerName] is not a function
+2025-03-11 13:49:31 error: Ошибка при отправке сообщения о неизвестной команде: EFATAL: Error: read ECONNRESET
+2025-03-11 13:51:49 error: Ошибка при выполнении команды /dota: commandHandlers[handlerName] is not a function
+2025-03-11 16:46:13 error: Ошибка при выполнении команды sticks: commandHandlers.handleSticks is not a function
+2025-03-11 16:46:53 error: Ошибка при выполнении команды sticks: commandHandlers.handleSticks is not a function

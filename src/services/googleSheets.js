@@ -195,6 +195,158 @@ class GoogleSheetsService {
             throw error;
         }
     }
+
+    async saveVote(name, vote) {
+        if (!this.initialized) {
+            await this.initialize();
+        }
+
+        try {
+            // Получаем текущую дату
+            const today = new Date().toLocaleDateString('ru-RU');
+            
+            // Получаем все данные таблицы
+            const response = await this.sheets.spreadsheets.values.get({
+                spreadsheetId: config.GOOGLE_SHEET_ID,
+                range: 'A:Z',
+                valueRenderOption: 'UNFORMATTED_VALUE'
+            });
+
+            const rows = response.data.values;
+            if (!rows || rows.length === 0) {
+                throw new Error('Данные не найдены в таблице');
+            }
+
+            const headers = rows[0];
+            const nameIndex = headers.indexOf('Имя');
+            const voteIndex = headers.indexOf('Голосование');
+            const voteDateIndex = headers.indexOf('Дата голосования');
+
+            // Если столбцов нет, добавляем их
+            if (voteIndex === -1 || voteDateIndex === -1) {
+                await this.sheets.spreadsheets.batchUpdate({
+                    spreadsheetId: config.GOOGLE_SHEET_ID,
+                    resource: {
+                        requests: [{
+                            appendDimension: {
+                                sheetId: 0,
+                                dimension: 'COLUMNS',
+                                length: 2
+                            }
+                        }]
+                    }
+                });
+
+                // Обновляем заголовки
+                await this.sheets.spreadsheets.values.update({
+                    spreadsheetId: config.GOOGLE_SHEET_ID,
+                    range: `${String.fromCharCode(65 + headers.length)}1:${String.fromCharCode(65 + headers.length + 1)}1`,
+                    valueInputOption: 'RAW',
+                    resource: {
+                        values: [['Голосование', 'Дата голосования']]
+                    }
+                });
+
+                headers.push('Голосование', 'Дата голосования');
+            }
+
+            // Ищем строку с именем пользователя
+            const rowIndex = rows.findIndex(row => 
+                row[nameIndex] && row[nameIndex].toString().toLowerCase().trim() === name.toLowerCase().trim()
+            );
+
+            if (rowIndex === -1) {
+                throw new Error(`Пользователь "${name}" не найден в таблице`);
+            }
+
+            // Обновляем голос и дату
+            const voteColumn = String.fromCharCode(65 + (voteIndex !== -1 ? voteIndex : headers.length - 2));
+            const dateColumn = String.fromCharCode(65 + (voteDateIndex !== -1 ? voteDateIndex : headers.length - 1));
+
+            await this.sheets.spreadsheets.values.batchUpdate({
+                spreadsheetId: config.GOOGLE_SHEET_ID,
+                resource: {
+                    valueInputOption: 'RAW',
+                    data: [
+                        {
+                            range: `${voteColumn}${rowIndex + 1}`,
+                            values: [[vote]]
+                        },
+                        {
+                            range: `${dateColumn}${rowIndex + 1}`,
+                            values: [[today]]
+                        }
+                    ]
+                }
+            });
+
+            this.clearCache();
+            logger.info(`Сохранен голос для ${name}: ${vote} (${today})`);
+            return true;
+        } catch (error) {
+            logger.error('Ошибка при сохранении голоса:', error);
+            throw error;
+        }
+    }
+
+    async getPollResults() {
+        if (!this.initialized) {
+            await this.initialize();
+        }
+
+        try {
+            const response = await this.sheets.spreadsheets.values.get({
+                spreadsheetId: config.GOOGLE_SHEET_ID,
+                range: 'A:Z',
+                valueRenderOption: 'UNFORMATTED_VALUE'
+            });
+
+            const rows = response.data.values;
+            if (!rows || rows.length === 0) {
+                throw new Error('Данные не найдены в таблице');
+            }
+
+            const headers = rows[0];
+            const nameIndex = headers.indexOf('Имя');
+            const voteIndex = headers.indexOf('Голосование');
+            const voteDateIndex = headers.indexOf('Дата голосования');
+
+            if (nameIndex === -1 || voteIndex === -1 || voteDateIndex === -1) {
+                throw new Error('Необходимые столбцы не найдены');
+            }
+
+            const today = new Date().toLocaleDateString('ru-RU');
+
+            const results = {
+                voted_yes: [],
+                voted_no: [],
+                not_voted: []
+            };
+
+            rows.slice(1).forEach(row => {
+                if (!row[nameIndex]) return;
+                
+                const name = row[nameIndex].toString().trim();
+                const vote = row[voteIndex];
+                const voteDate = row[voteDateIndex];
+
+                if (!voteDate || voteDate !== today) {
+                    results.not_voted.push(name);
+                } else if (vote === 'Да') {
+                    results.voted_yes.push(name);
+                } else if (vote === 'Нет') {
+                    results.voted_no.push(name);
+                } else {
+                    results.not_voted.push(name);
+                }
+            });
+
+            return results;
+        } catch (error) {
+            logger.error('Ошибка при получении результатов опроса:', error);
+            throw error;
+        }
+    }
 }
 
 module.exports = new GoogleSheetsService(); 
